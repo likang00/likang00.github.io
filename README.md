@@ -1,1 +1,1 @@
-#### https://likang00.github.io
+#### https://likang.ink
