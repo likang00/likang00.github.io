@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>calendar</title>
+
+    <!-- css -->
     <style media="screen">
         * {
             margin: 0;
@@ -18,16 +19,16 @@
         }
         
         .calendar {
-            width: 450px;
-            height: 350px;
+            /* width: 450px; */
+            /* height: 350px; */
             background-color: #fff;
             -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
             box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+            margin: auto;
         }
-        
-        .body {
+        /* .body {
             padding: 10px 20px;
-        }
+        } */
         
         .body-list ul {
             width: 100%;
@@ -38,7 +39,6 @@
         
         .body-list ul li {
             width: 14.28%;
-            height: 36px;
             line-height: 36px;
             list-style-type: none;
             display: block;
@@ -65,8 +65,8 @@
         }
         
         .title {
-            height: 70px;
-            border-bottom: 1px solid rgba(0, 0, 0, .1);
+            /* height: 70px;
+            border-bottom: 1px solid rgba(0, 0, 0, .1); */
             text-align: center;
             position: relative;
         }
@@ -95,8 +95,7 @@
             text-indent: -9999px;
             top: 0;
         }
-        
-        #prev {
+        /* #prev {
             left: 0;
             background-image: url(img/QQ图片20170425143518.png);
         }
@@ -104,21 +103,24 @@
         #next {
             right: 0;
             background-image: url(img/QQ图片20170425143510.png);
-        }
+        } */
     </style>
+
 </head>
+
+<!-- body -->
 
 <body>
     <div class="calendar">
         <div class="title">
             <h1 class="green" id="calendar-title">月份</h1>
             <h2 class="green small" id="calendar-year">年</h2>
-            <a href="javascript:;" id="prev">上月</a>
-            <a href="javascript:;" id="next">下月</a>
+            <!-- <a href="javascript:;" id="prev">上月</a>
+            <a href="javascript:;" id="next">下月</a> -->
         </div>
         <div class="body">
             <div class="lightgrey body-list">
-                <ul>
+                <ul class="xq">
                     <li>星期一</li>
                     <li>星期二</li>
                     <li>星期三</li>
@@ -133,82 +135,78 @@
             <ul id="days"></ul>
         </div>
     </div>
-
-    <script type="text/javascript">
-        const month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        const month_nomal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        const month_name = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-        const holder = document.getElementById('days');
-        const prev = document.getElementById('prev');
-        const next = document.getElementById('next');
-        const ctitle = document.getElementById('calendar-title');
-        const cyear = document.getElementById('calendar-year');
-
-        let my_date = new Date();
-        let my_year = my_date.getFullYear();
-        let my_month = my_date.getMonth();
-        let my_day = my_date.getDate();
-        cyear.innerHTML = my_year;
-        ctitle.innerHTML = month_name[my_month];
-
-        function refreshDate() {
-            let str = '';
-            // 该月总天数
-            let totalDay = daysMonth(my_month, my_year);
-            // 一号是星期几？
-            let firstDay = dayStart(my_month, my_year);
-            for (var i = 1; i < firstDay; i++) {
-                str += '<li></li>';
-            }
-            for (var i = 1; i <= totalDay; i++) {
-                // 今天是几号？
-                let myclass = '';
-                if (i == my_day && my_year == my_date.getFullYear() &&
-                    my_month == my_date.getMonth()) {
-                    myclass = 'green greenbox';
-                }
-                str += `<li class=${myclass}>${i}</li>`
-            }
-            holder.innerHTML = str;
-        }
-
-        function dayStart(month, year) {
-            let tmpData = new Date(year, month, 1);
-            return (tmpData.getDay());
-        }
-
-        function daysMonth(month, year) {
-            let tmp = year % 4;
-            if (tmp == 0) {
-                return month_olympic[month];
-            } else {
-                return month_nomal[month];
-            }
-        }
-        prev.addEventListener('click', function(e) {
-            e.preventDefault();
-            my_month--;
-            if (my_month < 0) {
-                my_year--;
-                my_month = 11;
-            }
-            cyear.innerHTML = my_year;
-            ctitle.innerHTML = month_name[my_month];
-            refreshDate();
-        }, false)
-        next.addEventListener('click', function(e) {
-            e.preventDefault();
-            my_month++;
-            if (my_month > 11) {
-                my_year++;
-                my_month = 0;
-            }
-            cyear.innerHTML = my_year;
-            ctitle.innerHTML = month_name[my_month];
-            refreshDate();
-        }, false)
-        refreshDate();
-    </script>
 </body>
+
+<!-- script -->
+<script>
+    const month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const month_nomal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const month_name = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+
+    const holder = document.getElementById('days');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const ctitle = document.getElementById('calendar-title');
+    const cyear = document.getElementById('calendar-year');
+
+    const zb = ['zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy']
+
+    // console.log(holder)
+    // console.log(prev)
+    // console.log(next)
+    // console.log(ctitle)
+    // console.log(cyear)
+
+    let my_date = new Date();
+    let my_year = my_date.getFullYear();
+    let my_month = my_date.getMonth();
+    let my_day = my_date.getDate();
+    cyear.innerHTML = my_year;
+    ctitle.innerHTML = month_name[my_month];
+
+    function refreshDate() {
+        let str = '';
+
+        // 该月总天数
+        let totalDay = daysMonth(my_month, my_year);
+        // 一号是星期几？
+        let firstDay = dayStart(my_month, my_year);
+        for (var i = 1; i < firstDay; i++) {
+            str += '<li></li>';
+        }
+        for (var i = 1; i <= totalDay; i++) {
+            // 今天是几号？
+            let myclass = '';
+            if (i == my_day && my_year == my_date.getFullYear() &&
+                my_month == my_date.getMonth()) {
+                myclass = 'green greenbox';
+            }
+            // str += `<li class=${myclass}>${i}</li>`
+            str += `<li class=${myclass}>
+            <div class="div_day">${i}</div>
+            <div class="div_people">${zb[i - 1]}</div>
+            </li>`
+                // console.log(zb[i - 1])
+        }
+        console.log(str)
+        holder.innerHTML = str;
+    }
+
+    function dayStart(month, year) {
+        let tmpData = new Date(year, month, 1);
+        return (tmpData.getDay());
+    }
+
+    function daysMonth(month, year) {
+        let tmp = year % 4;
+        if (tmp == 0) {
+            return month_olympic[month];
+        } else {
+            return month_nomal[month];
+        }
+    }
+
+    refreshDate();
+</script>
 
 </html>
