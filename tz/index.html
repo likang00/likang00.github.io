@@ -149,45 +149,38 @@
     const ctitle = document.getElementById('calendar-title');
     const cyear = document.getElementById('calendar-year');
 
-    // const zb = ['zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy', 'zlk', 'zyl', 'lhy']
-
     const zb = [
-            '张杨柳',
-            '李浩宇',
-            '张立康',
-            '张杨柳',
-            '李浩宇',
-            '李浩宇',
-            '张立康',
-            '张立康',
-            '张杨柳',
-            '李浩宇',
-            '张立康',
-            '张杨柳',
-            '张杨柳',
-            '李浩宇',
-            '李浩宇',
-            '张立康',
-            '张杨柳',
-            '李浩宇',
-            '张立康',
-            '张立康',
-            '张杨柳',
-            '张杨柳',
-            '李浩宇',
-            '张立康',
-            '李浩宇',
-            '张立康',
-            '张杨柳',
-            '张杨柳',
-            '李浩宇',
-            '张立康'
-        ]
-        // console.log(holder)
-        // console.log(prev)
-        // console.log(next)
-        // console.log(ctitle)
-        // console.log(cyear)
+        '张杨柳',
+        '李浩宇',
+        '张立康',
+        '张杨柳',
+        '李浩宇',
+        '李浩宇',
+        '张立康',
+        '张立康',
+        '张杨柳',
+        '李浩宇',
+        '张立康',
+        '张杨柳',
+        '张杨柳',
+        '李浩宇',
+        '李浩宇',
+        '张立康',
+        '张杨柳',
+        '李浩宇',
+        '张立康',
+        '张立康',
+        '张杨柳',
+        '张杨柳',
+        '李浩宇',
+        '张立康',
+        '李浩宇',
+        '张立康',
+        '张杨柳',
+        '张杨柳',
+        '李浩宇',
+        '张立康'
+    ]
 
     let my_date = new Date();
     let my_year = my_date.getFullYear();
@@ -213,14 +206,11 @@
                 my_month == my_date.getMonth()) {
                 myclass = 'green greenbox';
             }
-            // str += `<li class=${myclass}>${i}</li>`
             str += `<li class=${myclass}>
             <div class="div_day">${i}</div>
             <div class="div_people">${zb[i - 1]}</div>
             </li>`
-                // console.log(zb[i - 1])
         }
-        console.log(str)
         holder.innerHTML = str;
     }
 
