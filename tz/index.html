@@ -178,7 +178,9 @@
         "张立康",
         "张杨柳",
         "李浩宇",
-        "张立康"
+        "张立康",
+        "张杨柳",
+        "李浩宇"
     ]
 
     let my_date = new Date();
@@ -195,8 +197,11 @@
         let totalDay = daysMonth(my_month, my_year);
         // 一号是星期几？
         let firstDay = dayStart(my_month, my_year);
+        console.log(firstDay)
         for (var i = 1; i < firstDay; i++) {
-            str += '<li></li>';
+            str += `<li>
+            <div>.</div>
+            </li>`;
         }
         for (var i = 1; i <= totalDay; i++) {
             // 今天是几号？
